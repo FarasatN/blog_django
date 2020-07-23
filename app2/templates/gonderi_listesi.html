@@ -1,6 +1,8 @@
 {% load staticfiles %}
 <html>	
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="{% static 'css/blog_site.css' %}">
@@ -9,17 +11,21 @@
 
 <body>
 	<div>
-		<h1><a href=""><img src="https://www.livermoreschools.org/cms/lib/CA50000061/Centricity/Domain/72/Tech%20Graphic%20Blue%20and%20Gold.png" height="200" width="270" >Farasat's Personal Blog Site</a></h1>
+		<a href=""><img src="https://www.livermoreschools.org/cms/lib/CA50000061/Centricity/Domain/72/Tech%20Graphic%20Blue%20and%20Gold.png" height="200" width="340" ></a>
+		<hr>
+		<h2>FARASAT'S PERSONAL BLOG SITE</h2>
+		<hr>
 	
 	</div>
 	
-	<div class="content_container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col">
+				{% csrf_token %}
 				{% for gonderi in gonderiler %}
 				<div class="post">
-	
-					<h1><a href="">{{ gonderi.baslik }}</a></h1>
+					<hr>
+					<h4><a href="">{{ gonderi.baslik }}</a></h4>
 	
 					<p>{{ gonderi.icerik|linebreaks }}</p>
 	
@@ -30,6 +36,7 @@
 					<a href="" class="tag">
 						<p>{{ gonderi.tag|linebreaks }}</p>
 					</a>
+					<hr>
 				</div>
 				{% endfor %}
 			</div>
